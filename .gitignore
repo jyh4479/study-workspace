@@ -4,3 +4,4 @@
 dictionaries
 *.xml
 *.iml
+*.lock
