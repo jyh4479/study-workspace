@@ -9,14 +9,20 @@ const TabStyle = styled(Center)`
   border: 1px solid gainsboro;
   border-radius: 4px;
   margin: 10px;
+
+  cursor: ${props => props.animation && "pointer"};
+
+  &:active {
+    transform: ${props => props.animation && "scale(0.95)"};
+  }
 `
 
 const Tab = props => {
 
-    const {value, children} = props;
+    const {animation, value, children} = props;
 
     return (
-        <TabStyle>
+        <TabStyle animation={animation}>
             {children}
         </TabStyle>
     )

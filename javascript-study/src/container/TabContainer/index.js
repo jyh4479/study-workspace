@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {ManagedInstanceBox, SelectInstanceBox, TabContainerLayout} from "./style";
+import {InstanceControlBox, InstanceSelectBox, ManagedInstanceBox, TabContainerLayout} from "./style";
 import Tab from "../../components/Tab";
 
 const TabContainer = props => {
@@ -9,16 +9,27 @@ const TabContainer = props => {
 
     useEffect(() => {
 
-    }, [])
+    }, [managedInstanceList])
 
-    return (<TabContainerLayout>
-        <ManagedInstanceBox>
-            {managedInstanceList.map(managedInstance => <Tab>{managedInstance}</Tab>)}
-        </ManagedInstanceBox>
-        <SelectInstanceBox>
-            {instanceList.map(instance => <Tab>{instance}</Tab>)}
-        </SelectInstanceBox>
-    </TabContainerLayout>)
+    return (
+        <TabContainerLayout>
+            <ManagedInstanceBox>
+                {managedInstanceList.map(managedInstance => <Tab key={managedInstance}>{managedInstance}</Tab>)}
+            </ManagedInstanceBox>
+            <InstanceSelectBox>
+                {
+                    instanceList.map(instance => <Tab onClick={() => {
+                        setManagedInstanceList([...managedInstanceList, instance])
+                        console.log(managedInstanceList)
+                    }} key={instance} animation>{instance}</Tab>)
+                }
+            </InstanceSelectBox>
+            <InstanceControlBox>
+                <button>prev</button>
+                <button>next</button>
+            </InstanceControlBox>
+        </TabContainerLayout>
+    )
 }
 
 export default TabContainer;
