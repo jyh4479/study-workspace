@@ -19,10 +19,10 @@ const TabStyle = styled(Center)`
 
 const Tab = props => {
 
-    const {animation, value, children} = props;
+    const {animation, value, children, onClick} = props;
 
     return (
-        <TabStyle animation={animation}>
+        <TabStyle onClick={onClick} animation={animation}>
             {children}
         </TabStyle>
     )

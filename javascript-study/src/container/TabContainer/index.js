@@ -9,7 +9,12 @@ const TabContainer = props => {
 
     useEffect(() => {
 
-    }, [managedInstanceList])
+    }, [])
+
+    const addInstance = instance => {
+        setManagedInstanceList([...managedInstanceList, instance])
+        console.log(managedInstanceList)
+    }
 
     return (
         <TabContainerLayout>
@@ -18,10 +23,13 @@ const TabContainer = props => {
             </ManagedInstanceBox>
             <InstanceSelectBox>
                 {
-                    instanceList.map(instance => <Tab onClick={() => {
-                        setManagedInstanceList([...managedInstanceList, instance])
-                        console.log(managedInstanceList)
-                    }} key={instance} animation>{instance}</Tab>)
+                    // instanceList.map(instance => <Tab onClick={() => {
+                    //     setManagedInstanceList([...managedInstanceList, instance])
+                    //     console.log(managedInstanceList)
+                    // }} key={instance} animation>{instance}</Tab>)
+
+                    instanceList.map(instance =>
+                        <Tab onClick={() => addInstance(instance)} key={instance} animation>{instance}</Tab>)
                 }
             </InstanceSelectBox>
             <InstanceControlBox>
