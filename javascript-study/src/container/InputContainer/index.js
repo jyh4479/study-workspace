@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useCallback, useMemo, useState} from "react";
 import {InputContainerLayout} from "./style";
 
 // 업무중 Input 내부 내용이 특정 event 없이 수정되는 동작에 의해 rendering되는 문제가 있었다.
@@ -7,18 +7,25 @@ const InputContainer = props => {
 
     const [number, setNumber] = useState('');
 
-    const onChangeNumber = e => {
+    const onChangeNumber = useCallback(e => {
         setNumber(e.target.value);
-    }
+    }, []);
 
-    const addNumber = () => {
-        alert(Number(number) + 12345678910);
-    }
+    const addNumber = useCallback(e => {
+        alert(Number(number) + 1);
+    }, [number])
+
+    const buttonView = useMemo(() => {
+        return (
+            <button onClick={e => addNumber(e)}>event</button>
+        )
+    }, [addNumber])
+
 
     return (
         <InputContainerLayout>
             <input value={number} onChange={onChangeNumber}/>
-            <button onClick={() => addNumber()}>event</button>
+            {buttonView}
         </InputContainerLayout>
     )
 }
