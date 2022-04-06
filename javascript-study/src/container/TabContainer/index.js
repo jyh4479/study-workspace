@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {InstanceControlBox, InstanceSelectBox, ManagedInstanceBox, TabContainerLayout} from "./style";
 import Tab from "../../components/Tab";
 
+// 업무중 탭 추가, 삭제에 대한 괜찮은 알고리즘을 연구, 개발하는데 목적을 둔다
 const TabContainer = props => {
 
     const instanceList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
