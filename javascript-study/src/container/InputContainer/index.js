@@ -30,10 +30,8 @@ const InputContainer = props => {
         <InputContainerLayout>
             <input value={number} onChange={onChangeNumber}/>
             {buttonView}
-            <Input/>
-            {
-                useMemo(() => <Input/>, [])
-            }
+            <Input parentNumber={number}/>
+            {useMemo(() => <Input/>, [])}
         </InputContainerLayout>
     )
 }

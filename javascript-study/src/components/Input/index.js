@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 
 const Input = props => {
 
@@ -10,12 +10,15 @@ const Input = props => {
         setMyNumber(e.target.value);
     }
 
-
+    const onCreateTestFunction = useCallback(e => {
+        console.log("함수 생성");
+        console.log(e.target.innerText);
+    }, [])
 
     return (
         <>
             <input value={myNumber} onChange={onChangeNumber}/>
-            <div>{parentNumber}</div>
+            <div onClick={onCreateTestFunction}>{parentNumber}</div>
         </>
     )
 }
