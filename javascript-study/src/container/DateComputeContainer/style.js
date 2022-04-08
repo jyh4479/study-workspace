@@ -12,3 +12,15 @@ export const DateViewer = styled(Center)`
   border: none;
   border-radius: 8px;
 `
+
+export const DateComputedContainer = styled(Center)`
+
+`
+
+export const DateComputedViewer = styled(Center)`
+  width: 200px;
+  height: 50px;
+  background-color: ${props => props.bg};
+  border: none;
+  border-radius: 8px;
+`
