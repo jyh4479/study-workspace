@@ -22,6 +22,7 @@ const useStateContainer = props => {
 
     // 상태를 업데이트하는데 추천되는 방법 --> 왜? 동작이 어떻게 되는거지..?
     // 비동기적으로 state가 업데이트 되기때문에 아래와 같은 형태의 업데이트를 추천한다.
+    //https://stackoverflow.com/questions/57828368/why-react-usestate-with-functional-update-form-is-needed
     // ex 1)
     // return (
     //     <UseStateContainerLayout>
