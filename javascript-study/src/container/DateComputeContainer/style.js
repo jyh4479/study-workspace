@@ -14,7 +14,7 @@ export const DateViewer = styled(Center)`
 `
 
 export const DateComputedContainer = styled(Center)`
-
+    flex-direction: column;
 `
 
 export const DateComputedViewer = styled(Center)`
