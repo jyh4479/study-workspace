@@ -5,15 +5,19 @@ import InputContainer from "./container/InputContainer";
 import UseStateContainer from "./container/UseStateContainer";
 import DateComputeContainer from "./container/DateComputeContainer";
 import TabListContainer from "./container/TabListContainer";
+import CleanUpContainer from "./container/CleanUpContainer";
 
 const App = () => {
     return (
         <AppPageLayout>
+
             {/*<TabContainer/>*/}
             {/*<InputContainer/>*/}
             {/*<UseStateContainer/>*/}
             {/*<DateComputeContainer/>*/}
-            <TabListContainer/>
+            {/*<TabListContainer/>*/}
+            <CleanUpContainer/>
+
         </AppPageLayout>
     )
 }
