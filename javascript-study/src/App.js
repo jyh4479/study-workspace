@@ -6,6 +6,7 @@ import UseStateContainer from "./container/UseStateContainer";
 import DateComputeContainer from "./container/DateComputeContainer";
 import TabListContainer from "./container/TabListContainer";
 import CleanUpContainer from "./container/CleanUpContainer";
+import ZustandContainer from "./container/ZustandContainer";
 
 const App = () => {
     return (
@@ -16,7 +17,8 @@ const App = () => {
             {/*<UseStateContainer/>*/}
             {/*<DateComputeContainer/>*/}
             {/*<TabListContainer/>*/}
-            <CleanUpContainer/>
+            {/*<CleanUpContainer/>*/}
+            <ZustandContainer/>
 
         </AppPageLayout>
     )
