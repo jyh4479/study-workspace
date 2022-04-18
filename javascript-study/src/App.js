@@ -8,6 +8,7 @@ import TabListContainer from "./container/TabListContainer";
 import CleanUpContainer from "./container/CleanUpContainer";
 import ZustandContainer from "./container/ZustandContainer";
 import SetStateContainer from "./container/SetStateContainer";
+import TryCatchContainer from "./container/TryCatchContainer";
 
 const App = () => {
     return (
@@ -20,7 +21,8 @@ const App = () => {
             {/*<TabListContainer/>*/}
             {/*<CleanUpContainer/>*/}
             {/*<ZustandContainer/>*/}
-            <SetStateContainer/>
+            {/*<SetStateContainer/>*/}
+            <TryCatchContainer/>
 
         </AppPageLayout>
     )
