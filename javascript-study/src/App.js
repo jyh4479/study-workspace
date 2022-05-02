@@ -1,14 +1,6 @@
 import React from "react";
 import {AppPageLayout} from "./AppStyle";
-import TabContainer from "./container/TabContainer";
-import InputContainer from "./container/InputContainer";
-import UseStateContainer from "./container/UseStateContainer";
-import DateComputeContainer from "./container/DateComputeContainer";
-import TabListContainer from "./container/TabListContainer";
-import CleanUpContainer from "./container/CleanUpContainer";
-import ZustandContainer from "./container/ZustandContainer";
-import SetStateContainer from "./container/SetStateContainer";
-import TryCatchContainer from "./container/TryCatchContainer";
+import {MuiDataTableContainer, TuiDataTableContainer} from "./container/TableTestContainer";
 
 const App = () => {
     return (
@@ -22,7 +14,10 @@ const App = () => {
             {/*<CleanUpContainer/>*/}
             {/*<ZustandContainer/>*/}
             {/*<SetStateContainer/>*/}
-            <TryCatchContainer/>
+            {/*<TryCatchContainer/>*/}
+
+            <MuiDataTableContainer/>
+            <TuiDataTableContainer/>
 
         </AppPageLayout>
     )
