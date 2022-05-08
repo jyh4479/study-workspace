@@ -28,7 +28,7 @@ const TuiDataTableContainer = () => {
                 component.removeEventListener(type, event);
             })
         }
-    }
+    };
 
     useEffect(() => {
         const tableHeaders = tableRef.current.querySelectorAll(".tui-grid-btn-sorting");
@@ -51,22 +51,25 @@ const TuiDataTableContainer = () => {
             });
         })
         return () => removeCustomEventListener('click');
-    }, [tableRef])
+        //eslint-disable-next-line
+    }, [])
 
-    const MyComponent = () => (<div ref={tableRef}>
-        <Grid
-            data={data}
-            columns={columns}
-            rowHeight={25}
-            bodyHeight={200}
-            heightResizable={true}
-            rowHeaders={['rowNum']}
+    const MyComponent = () => (
+        <div ref={tableRef}>
+            <Grid
+                data={data}
+                columns={columns}
+                rowHeight={25}
+                bodyHeight={200}
+                heightResizable={true}
+                rowHeaders={['rowNum']}
 
-            pageOptions={{
-                useClient: true, page: 1, perPage: 10,
-            }}
-        />
-    </div>);
+                pageOptions={{
+                    useClient: true, page: 1, perPage: 10,
+                }}
+            />
+        </div>
+    );
 
     return MyComponent();
 }
