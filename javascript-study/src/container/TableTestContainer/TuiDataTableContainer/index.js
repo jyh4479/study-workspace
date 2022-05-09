@@ -52,11 +52,12 @@ const TuiDataTableContainer = () => {
                 }
             });
         })
+
         return () => removeCustomEventListener('click');
         //eslint-disable-next-line
-    }, [])
+    }, [tableRef])
 
-    const MyComponent = () => (
+    return (
         <div ref={tableRef}>
             <Grid
                 data={data}
@@ -72,8 +73,6 @@ const TuiDataTableContainer = () => {
             />
         </div>
     );
-
-    return MyComponent();
 }
 
 export default TuiDataTableContainer;
