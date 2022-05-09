@@ -1,10 +1,18 @@
-# 현 직장에서 React 업무를하며 배우게되는 JavaScript관련 지식 정리
+# 공부해볼 키워드 모음
 
-- JS 관련 미숙한 문법 & 더 괜찮은 문법
-- JS 동작 원리 & 성능과 관련된 문법
-- 자주 사용되는 문법
+- useMemo, useCallback 등 hook
+- async, await
+- browser 동작 원리
+- rendering 되는 조건
+- DOM tree (?)
+- reflow, repaint, composite
+- rendering 순서, 세부적 동작
+- async for of (?)
+- vite, snowpack
+- webpack, babel
+- useRef 사용시 style 변경 후 다른 페이지 이동시 스타일이 남아있는 현상 (TuiDataTableContainer)
 
-#### 위 3가지 항목에 대한 위주의 공부 (항목은 유동적으로 변경하여 학습)
+#### 새로 보는 개념, 표현, 기술, 다시 봐야할 기술, 개념 등 키워드 기록
 
 [//]: # (# Getting Started with Create React App)
 
