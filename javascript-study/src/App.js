@@ -1,6 +1,8 @@
 import React from "react";
 import {AppPageLayout} from "./AppStyle";
 import {MuiDataTableContainer, TuiDataTableContainer} from "./container/TableTestContainer";
+import WithTestContainer from "./container/WithTestContainer";
+import TabListContainer from "./container/TabListContainer";
 
 const App = () => {
     return (
@@ -10,14 +12,16 @@ const App = () => {
             {/*<InputContainer/>*/}
             {/*<UseStateContainer/>*/}
             {/*<DateComputeContainer/>*/}
-            {/*<TabListContainer/>*/}
+            <TabListContainer/>
             {/*<CleanUpContainer/>*/}
             {/*<ZustandContainer/>*/}
             {/*<SetStateContainer/>*/}
             {/*<TryCatchContainer/>*/}
 
-            <MuiDataTableContainer/>
-            <TuiDataTableContainer/>
+            {/*<MuiDataTableContainer/>*/}
+            {/*<TuiDataTableContainer/>*/}
+
+            {/*<WithTestContainer/>*/}
 
         </AppPageLayout>
     )
