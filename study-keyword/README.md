@@ -12,6 +12,8 @@
 - webpack, babel
 - useRef 사용시 style 변경 후 다른 페이지 이동시 스타일이 남아있는 현상 (TuiDataTableContainer)
 
+- https://doqtqu.tistory.com/341#toc-%EB%91%90%20%EB%B2%88%EC%A7%B8%20%EB%B0%A9%EB%B2%95,%20Install%20react-error-overlay%C2%A0 (오류 수정에 대한 참고 블로그 version 증상 --> 코드 수정 후 반영되면서 페이지가 멈추는 현상 해당 블로그 참고 후 react-scripts 4.0.3 -> 5.0.1 upgrade하면서 해결 원인 찾아보기)
+
 #### 새로 보는 개념, 표현, 기술, 다시 봐야할 기술, 개념 등 키워드 기록
 
 [//]: # (# Getting Started with Create React App)
