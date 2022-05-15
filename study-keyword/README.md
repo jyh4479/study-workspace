@@ -12,6 +12,7 @@
 - webpack, babel
 - useRef 사용시 style 변경 후 다른 페이지 이동시 스타일이 남아있는 현상 (TuiDataTableContainer)
 - Tab 관련 추가, 제거 가능한 라이브러리? --> 만약 구현 한다면 어떻게 최적화? (현 상황은 배열에서 다 찾는다, 객체로 key로 접근하면 더 빠를까?)
+- Chart library 리서치 & 직접 만들어보기
 
 - https://doqtqu.tistory.com/341#toc-%EB%91%90%20%EB%B2%88%EC%A7%B8%20%EB%B0%A9%EB%B2%95,%20Install%20react-error-overlay%C2%A0 (오류 수정에 대한 참고 블로그 version 증상 --> 코드 수정 후 반영되면서 페이지가 멈추는 현상 해당 블로그 참고 후 react-scripts 4.0.3 -> 5.0.1 upgrade하면서 해결 원인 찾아보기)
 
