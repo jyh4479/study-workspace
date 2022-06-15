@@ -1,6 +1,11 @@
-import React from 'react';
-import {FormControl, InputLabel, ListItemText, OutlinedInput, Select} from "@mui/material";
-import {Checkbox, MenuItem} from "material-ui";
+import * as React from 'react';
+import {useState} from 'react';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import {FormControlLabel, Radio, RadioGroup} from "@mui/material";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -26,42 +31,41 @@ const names = [
     'Kelly Snyder',
 ];
 
-const IndicatorRadioContainer = props => {
-
-    const [personName, setPersonName] = React.useState([]);
-
+export default function IndicatorRadioContainer() {
+    // const [personName, setPersonName] = React.useState([]);
+    const [value, setValue] = useState(null);
     const handleChange = (event) => {
-        const {
-            target: {value},
-        } = event;
-        setPersonName(
-            // On autofill we get a stringified value.
-            typeof value === 'string' ? value.split(',') : value,
-        );
+        setValue(event.target.value);
     };
 
     return (
-        <FormControl sx={{m: 1, width: 300}}>
-            <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
-            <Select
-                labelId="demo-multiple-checkbox-label"
-                id="demo-multiple-checkbox"
-                multiple
-                value={personName}
-                onChange={handleChange}
-                input={<OutlinedInput label="Tag"/>}
-                renderValue={(selected) => selected.join(', ')}
-                MenuProps={MenuProps}
-            >
-                {names.map((name) => (
-                    <MenuItem key={name} value={name}>
-                        <Checkbox checked={personName.indexOf(name) > -1}/>
-                        <ListItemText primary={name}/>
-                    </MenuItem>
-                ))}
-            </Select>
-        </FormControl>
-    )
-};
-
-export default IndicatorRadioContainer;
+        <div>
+            <FormControl sx={{m: 1, width: 300}}>
+                <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
+                <Select
+                    labelId="demo-multiple-checkbox-label"
+                    id="demo-multiple-checkbox"
+                    multiple
+                    value={[value]}
+                    // onChange={handleChange}
+                    input={<OutlinedInput label="Tag"/>}
+                    renderValue={(selected) => selected.join(', ')}
+                    MenuProps={MenuProps}
+                >
+                    <RadioGroup
+                        value={value}
+                        onChange={handleChange}
+                    >
+                        {names.map((name, index) => (
+                            <MenuItem key={index} value={name}>
+                                <FormControlLabel value={name} control={<Radio/>} label={name}/>
+                                {/*<Radio checked={personName.indexOf(name) > -1}/>*/}
+                                {/*<ListItemText primary={value}/>*/}
+                            </MenuItem>
+                        ))}
+                    </RadioGroup>
+                </Select>
+            </FormControl>
+        </div>
+    );
+}
