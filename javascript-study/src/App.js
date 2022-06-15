@@ -1,6 +1,6 @@
 import React from "react";
 import {AppPageLayout} from "./AppStyle";
-import TimeStampTestContainer from "./container/TimeStampTestContainer";
+import IndicatorRadioContainer from "./container/IndicatorRadioContainer";
 
 const App = () => {
     return (
@@ -21,7 +21,9 @@ const App = () => {
 
             {/*<WithTestContainer/>*/}
 
-            <TimeStampTestContainer/>
+            {/*<TimeStampTestContainer/>*/}
+
+            <IndicatorRadioContainer/>
 
         </AppPageLayout>
     )
