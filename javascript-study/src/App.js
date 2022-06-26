@@ -1,10 +1,9 @@
 import React from "react";
 import {AppPageLayout} from "./AppStyle";
-import IndicatorRadioContainer from "./container/IndicatorRadioContainer";
+import ChartTestContainer from "./container/ChartTestContainer";
 
 const App = () => {
-    return (
-        <AppPageLayout>
+    return (<AppPageLayout>
 
             {/*<TabContainer/>*/}
             {/*<InputContainer/>*/}
@@ -23,10 +22,11 @@ const App = () => {
 
             {/*<TimeStampTestContainer/>*/}
 
-            <IndicatorRadioContainer/>
+            {/*<IndicatorRadioContainer/>*/}
 
-        </AppPageLayout>
-    )
+            <ChartTestContainer/>
+
+        </AppPageLayout>)
 }
 
 export default App;
