@@ -1,32 +1,34 @@
 import React from "react";
 import {AppPageLayout} from "./AppStyle";
-import ChartTestContainer from "./container/ChartTestContainer";
+import ComponentTestContainer from "./container/ComponentTestContainer";
 
 const App = () => {
     return (<AppPageLayout>
 
-            {/*<TabContainer/>*/}
-            {/*<InputContainer/>*/}
-            {/*<UseStateContainer/>*/}
-            {/*<DateComputeContainer/>*/}
-            {/*<TabListContainer/>*/}
-            {/*<CleanUpContainer/>*/}
-            {/*<ZustandContainer/>*/}
-            {/*<SetStateContainer/>*/}
-            {/*<TryCatchContainer/>*/}
+        {/*<TabContainer/>*/}
+        {/*<InputContainer/>*/}
+        {/*<UseStateContainer/>*/}
+        {/*<DateComputeContainer/>*/}
+        {/*<TabListContainer/>*/}
+        {/*<CleanUpContainer/>*/}
+        {/*<ZustandContainer/>*/}
+        {/*<SetStateContainer/>*/}
+        {/*<TryCatchContainer/>*/}
 
-            {/*<MuiDataTableContainer/>*/}
-            {/*<TuiDataTableContainer/>*/}
+        {/*<MuiDataTableContainer/>*/}
+        {/*<TuiDataTableContainer/>*/}
 
-            {/*<WithTestContainer/>*/}
+        {/*<WithTestContainer/>*/}
 
-            {/*<TimeStampTestContainer/>*/}
+        {/*<TimeStampTestContainer/>*/}
 
-            {/*<IndicatorRadioContainer/>*/}
+        {/*<IndicatorRadioContainer/>*/}
 
-            <ChartTestContainer/>
+        {/*<ChartTestContainer/>*/}
 
-        </AppPageLayout>)
+        <ComponentTestContainer/>
+
+    </AppPageLayout>)
 }
 
 export default App;
