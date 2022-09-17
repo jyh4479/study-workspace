@@ -4,3 +4,6 @@
 # Bundle
 - webpack
 - snowpack & vite (https://youtu.be/iX3Nu1FcZKA)
+
+# React 동작 원리 관련 참고 자료
+- https://goidle.github.io/react/in-depth-react-hooks_1/
