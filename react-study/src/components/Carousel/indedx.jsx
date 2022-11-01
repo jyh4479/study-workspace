@@ -1,8 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {carouselData} from "./data";
+import {CarouselBox} from "./style";
 
 const Carousel = (props) => {
+
+    const [dataList, setDataList] = useState(carouselData);
+
+
     return (
-        <div>Carousel</div>
+        <CarouselBox>
+
+        </CarouselBox>
     )
 };
 
