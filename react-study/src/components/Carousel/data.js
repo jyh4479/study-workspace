@@ -1,17 +1,17 @@
 export const carouselData = [
     {
-        data: 1
+        value: 1
     },
     {
-        data: 2
+        value: 2
     },
     {
-        data: 3
+        value: 3
     },
     {
-        data: 4
+        value: 4
     },
     {
-        data: 5
+        value: 5
     }
 ]
