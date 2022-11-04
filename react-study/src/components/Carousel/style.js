@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CarouselBox = styled.div`
   background-color: lightblue;
   display: flex;
-  justify-content: center;
+  //justify-content: flex-start;
   align-items: center;
   overflow: hidden;
 
@@ -18,13 +18,9 @@ export const CarouselContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  flex: 0 0 150px;
-
+  flex: 0 0 100%;
   height: 100px;
-  margin: 0 10px;
-
-  border: 1px solid #000000
+  transition: transform ease-in 0.5s;
 `
 
 export const CarouselButton = styled.button`
