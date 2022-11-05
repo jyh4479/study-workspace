@@ -8,26 +8,25 @@ const Carousel = (props) => {
     const [curPosition, setCurPosition] = useState(0);
     const contentsRef = useRef([]);
 
-    const onClickLeft = () => {
-        setCurPosition(prev => {
-            const nextPosition = prev + 100;
-            contentsRef.current.forEach(el => {
-                el.style.transform = `translateX(${nextPosition}%)`;
-            })
-            return nextPosition;
-        })
-        // setDataList(prev => [prev[prev.length - 1], ...prev.slice(0, prev.length - 1)])
+    const distance = 100;
+
+    const checkPosition = (position) => {
+
     }
 
-    const onClickRight = () => {
+    const onClickMoveContents = (direction) => {
         setCurPosition(prev => {
-            const nextPosition = prev - 100;
+            const nextPosition = prev + (direction === "left" ? distance : -distance);
+
+            if (checkPosition(nextPosition)) {
+                return prev;
+            }
+
             contentsRef.current.forEach(el => {
                 el.style.transform = `translateX(${nextPosition}%)`;
             })
             return nextPosition;
         })
-        // setDataList(prev => [...prev.slice(1), prev[0]])
     }
 
     return (
@@ -40,8 +39,8 @@ const Carousel = (props) => {
                     </CarouselContent>
                 ))
             }
-            <CarouselButton className={"left"} onClick={() => onClickLeft()}>{'<'}</CarouselButton>
-            <CarouselButton className={"right"} onClick={() => onClickRight()}>{'>'}</CarouselButton>
+            <CarouselButton className={"left"} onClick={() => onClickMoveContents("left")}>{'<'}</CarouselButton>
+            <CarouselButton className={"right"} onClick={() => onClickMoveContents("right")}>{'>'}</CarouselButton>
         </CarouselBox>
     )
 };
