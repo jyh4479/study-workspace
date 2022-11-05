@@ -11,7 +11,7 @@ const Carousel = (props) => {
     const distance = 100;
 
     const checkPosition = (position) => {
-
+        return (position > 0 || position <= -distance * dataList.length);
     }
 
     const onClickMoveContents = (direction) => {
@@ -36,8 +36,8 @@ const Carousel = (props) => {
                     <CarouselContent
                         ref={el => contentsRef.current[index] = el}
                         key={data.value}><span>{data.value}</span>
-                    </CarouselContent>
-                ))
+                    </CarouselContent>)
+                )
             }
             <CarouselButton className={"left"} onClick={() => onClickMoveContents("left")}>{'<'}</CarouselButton>
             <CarouselButton className={"right"} onClick={() => onClickMoveContents("right")}>{'>'}</CarouselButton>
