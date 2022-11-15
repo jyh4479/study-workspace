@@ -3,7 +3,7 @@ import React, {useEffect, useRef, useState} from "react";
 import * as d3 from "d3";
 import {CenterBox} from "../common/style";
 
-//https://bl.ocks.org/guilhermesimoes/be6b8be8a3e8dc2b70e2 참고
+//http://www.d3noob.org/2014/02/attributes-in-d3js.html
 const BarChart = (props) => {
 
     const ref = useRef();
@@ -42,20 +42,11 @@ const BarChart = (props) => {
             .data(data)
             .enter()
             .append("rect")
-            .attr("x", function (d, i) { // position in x-axis
-                return xScale(i); // we will pass the values from the dataset
-            })
-            .attr("y", function (d) {
-                return h - yScale(d);
-            })
+            .attr("x", (d, i) => xScale(i)) //// position in x-axis, we will pass the values from the dataset
+            .attr("y", h)
             .attr("width", xScale.bandwidth()) //Asks for the bandwith of the scale
-            .attr("height", function (d) {
-                // return yScale(d);
-                return 0;
-            })
-            .attr("fill", function (d) {
-                return "rgb(" + Math.round(d * 8) + ",0," + Math.round(d * 10) + ")"; //Change the color of the bar depending on the value
-            });
+            .attr("height", 0)
+            .attr("fill", d => "rgb(" + Math.round(d * 8) + ",0," + Math.round(d * 10) + ")") //Change the color of the bar depending on the value
 
     }, [])
 
@@ -72,7 +63,7 @@ const BarChart = (props) => {
         svg.selectAll("rect")
             .data(data)
             .transition() // <---- Here is the transition
-            .duration(2000) // 2 seconds
+            .duration(1000) // 2 seconds
             .attr("y", function (d) {
                 return h - yScale(d);
             })
@@ -138,17 +129,15 @@ const BarChart = (props) => {
     //
     // }, [data])
 
-    return (
-        <div>
-            <CenterBox>
-                <h2>Top 5 Chart Example</h2>
-                <button onClick={() => updateData()}>Random Data</button>
-            </CenterBox>
-            <CenterBox>
-                <svg ref={ref}></svg>
-            </CenterBox>
-        </div>
-    )
+    return (<div>
+        <CenterBox>
+            <h2>Top 5 Chart Example</h2>
+            <button onClick={() => updateData()}>Random Data</button>
+        </CenterBox>
+        <CenterBox>
+            <svg ref={ref}></svg>
+        </CenterBox>
+    </div>)
 };
 
 export default BarChart;
