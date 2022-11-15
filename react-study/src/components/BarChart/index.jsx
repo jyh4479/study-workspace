@@ -3,6 +3,7 @@ import React, {useEffect, useRef, useState} from "react";
 import * as d3 from "d3";
 import {CenterBox} from "../common/style";
 
+//https://bl.ocks.org/guilhermesimoes/be6b8be8a3e8dc2b70e2 참고
 const BarChart = (props) => {
 
     const ref = useRef();
@@ -17,31 +18,6 @@ const BarChart = (props) => {
     const updateData = () => {
         setData(prev => prev.map(d => getRandomData(0, 20)));
     }
-
-    useEffect(() => {
-        const w = 600;
-        const h = 250;
-
-        const svg = d3.select(ref.current);
-
-        const yScale = d3.scaleLinear()
-            .domain([0, d3.max(data)]) //sets the upper end of the input domain to the largest data value in dataset
-            .range([0, h]);
-
-        svg.selectAll("rect")
-            .data(data)
-            .transition() // <---- Here is the transition
-            .duration(2000) // 2 seconds
-            .attr("y", function (d) {
-                return h - yScale(d);
-            })
-            .attr("height", function (d) {
-                return yScale(d);
-            })
-            .attr("fill", function (d) {
-                return "rgb(" + Math.round(d * 8) + ",0," + Math.round(d * 10) + ")";
-            });
-    }, [data])
 
     useEffect(() => {
         const w = 600;
@@ -74,13 +50,39 @@ const BarChart = (props) => {
             })
             .attr("width", xScale.bandwidth()) //Asks for the bandwith of the scale
             .attr("height", function (d) {
-                return yScale(d);
+                // return yScale(d);
+                return 0;
             })
             .attr("fill", function (d) {
                 return "rgb(" + Math.round(d * 8) + ",0," + Math.round(d * 10) + ")"; //Change the color of the bar depending on the value
             });
 
     }, [])
+
+    useEffect(() => {
+        const w = 600;
+        const h = 250;
+
+        const svg = d3.select(ref.current);
+
+        const yScale = d3.scaleLinear()
+            .domain([0, d3.max(data)]) //sets the upper end of the input domain to the largest data value in dataset
+            .range([0, h]);
+
+        svg.selectAll("rect")
+            .data(data)
+            .transition() // <---- Here is the transition
+            .duration(2000) // 2 seconds
+            .attr("y", function (d) {
+                return h - yScale(d);
+            })
+            .attr("height", function (d) {
+                return yScale(d);
+            })
+            .attr("fill", function (d) {
+                return "rgb(" + Math.round(d * 8) + ",0," + Math.round(d * 10) + ")";
+            });
+    }, [data])
 
     // useEffect(() => {
     //
