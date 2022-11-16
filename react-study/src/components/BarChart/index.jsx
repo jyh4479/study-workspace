@@ -26,9 +26,12 @@ const BarChart = (props) => {
         d3.selectAll("svg > *").remove();
 
         const xScale = d3.scaleBand()
-            .domain(d3.range(data.length))
-            .rangeRound([0, w])
-            .paddingInner(0.05);
+            // .domain(d3.range(data.length))
+            // .rangeRound([0, w])
+            // .paddingInner(0.05);
+            .domain(data.map((val, i) => i))
+            .range([0, w])
+            .padding(0.5);
 
         const yScale = d3.scaleLinear()
             .domain([0, d3.max(data)]) //sets the upper end of the input domain to the largest data value in dataset
@@ -36,7 +39,15 @@ const BarChart = (props) => {
 
         const svg = d3.select(ref.current)
             .attr("width", w)
-            .attr("height", h);
+            .attr("height", h)
+            .style("overflow", "visible") //--> 이게 있어야 x 축이 보이네?
+
+        // axes
+        const xAxis = d3.axisBottom(xScale)
+            .ticks(data.length);
+        //
+        // const yAxis = d3.axisLeft(yScale)
+        //     .ticks(5);
 
         svg.selectAll("rect")
             .data(data)
@@ -47,6 +58,10 @@ const BarChart = (props) => {
             .attr("width", xScale.bandwidth()) //Asks for the bandwith of the scale
             .attr("height", 0)
             .attr("fill", d => "rgb(" + Math.round(d * 8) + ",0," + Math.round(d * 10) + ")") //Change the color of the bar depending on the value
+
+        svg.append('g')
+            .call(xAxis)
+            .attr("transform", `translate(0, ${h})`);
 
     }, [])
 
@@ -74,60 +89,6 @@ const BarChart = (props) => {
                 return "rgb(" + Math.round(d * 8) + ",0," + Math.round(d * 10) + ")";
             });
     }, [data])
-
-    // useEffect(() => {
-    //
-    //     // svg set up
-    //     const w = 400;
-    //     const h = 300;
-    //     const svg = d3.select(ref.current)
-    //         .attr("width", w)
-    //         .attr("height", h)
-    //         .style("overflow", "visible")
-    //         .style("margin-top", "75px")
-    //         .style("background", "lightblue");
-    //
-    //     d3.selectAll("svg > *").remove();
-    //
-    //     // scaling
-    //     const xScale = d3.scaleBand()
-    //         .domain(data.map((val, i) => i))
-    //         .range([0, w])
-    //         .padding(0.5);
-    //
-    //     const yScale = d3.scaleLinear()
-    //         .domain([0, h])
-    //         .range([h, 0]);
-    //
-    //     // axes
-    //     const xAxis = d3.axisBottom(xScale)
-    //         .ticks(data.length);
-    //     const yAxis = d3.axisLeft(yScale)
-    //         .ticks(5);
-    //
-    //     svg.append('g')
-    //         .call(xAxis)
-    //         .attr("transform", `translate(0, ${h})`);
-    //     svg.append('g')
-    //         .call(yAxis);
-    //
-    //     // svg data
-    //
-    //     console.log(data)
-    //
-    //     svg.selectAll('.bar')
-    //         .data(data)
-    //         .join("rect")
-    //         .attr('x', (v, i) => xScale(i))
-    //         .attr('y', yScale)
-    //         .attr("width", xScale.bandwidth())
-    //         .attr("height", val => 0)
-    //         .transition()
-    //         .duration(500)
-    //         .attr('y', d => yScale(d))
-    //         .attr("height", d => h - yScale(d));
-    //
-    // }, [data])
 
     return (<div>
         <CenterBox>

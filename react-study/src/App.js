@@ -1,6 +1,6 @@
 import './App.css';
-import Carousel from "./components/Carousel/indedx";
 import BarChart from "./components/BarChart";
+import BarChartRange from "./components/BarChartRange";
 
 function App() {
     return (
@@ -8,6 +8,7 @@ function App() {
 
             {/*<Carousel/>*/}
             <BarChart/>
+            {/*<BarChartRange/>*/}
 
         </div>
     );
