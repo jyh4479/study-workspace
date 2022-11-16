@@ -40,6 +40,7 @@ const BarChart = (props) => {
         const svg = d3.select(ref.current)
             .attr("width", w)
             .attr("height", h)
+            // .attr("viewBox",[0,0,w,h]) // 이거 뭔지 확인
             .style("overflow", "visible") //--> 이게 있어야 x 축이 보이네?
 
         // axes
