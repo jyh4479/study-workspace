@@ -7,7 +7,20 @@ import {CenterBox} from "../common/style";
 const BarChart = (props) => {
 
     const ref = useRef();
-    const [data, setData] = useState([11, 19, 22, 9, 6, 23, 10, 11, 12, 20, 9, 11, 12, 17, 14, 17, 8, 15, 5, 9]);
+    const [data, setData] = useState([
+        {name: "tibero1", data: 20},
+        {name: "tibero2", data: 15},
+        {name: "tibero3", data: 17},
+        {name: "tibero4", data: 10},
+        {name: "tibero5", data: 25}]);
+
+    const getMaxData = () => {
+        let value = 0;
+        data.forEach(val => {
+            value = Math.max(val.data, value);
+        })
+        return value;
+    }
 
     const getRandomData = (min, max) => {
         min = Math.ceil(min);
@@ -16,7 +29,9 @@ const BarChart = (props) => {
     }
 
     const updateData = () => {
-        setData(prev => prev.map(d => getRandomData(0, 20)));
+        setData(prev => prev.map((d, i) => {
+            return {name: `tibero${i + 1}}`, data: getRandomData(0, 20)}
+        }));
     }
 
     useEffect(() => {
@@ -29,12 +44,13 @@ const BarChart = (props) => {
             // .domain(d3.range(data.length))
             // .rangeRound([0, w])
             // .paddingInner(0.05);
-            .domain(data.map((val, i) => i))
+            // .domain(data.map((val, i) => i))
+            .domain(d3.range(data.length))
             .range([0, w])
-            .padding(0.5);
+            .padding(0.05);
 
         const yScale = d3.scaleLinear()
-            .domain([0, d3.max(data)]) //sets the upper end of the input domain to the largest data value in dataset
+            .domain([0, getMaxData()]) //sets the upper end of the input domain to the largest data value in dataset
             .range([0, h]);
 
         const svg = d3.select(ref.current)
@@ -45,7 +61,7 @@ const BarChart = (props) => {
 
         // axes
         const xAxis = d3.axisBottom(xScale)
-            .ticks(data.length);
+            .ticks(data.length).tickFormat(i => data[i].name);
         //
         // const yAxis = d3.axisLeft(yScale)
         //     .ticks(5);
@@ -73,7 +89,7 @@ const BarChart = (props) => {
         const svg = d3.select(ref.current);
 
         const yScale = d3.scaleLinear()
-            .domain([0, d3.max(data)]) //sets the upper end of the input domain to the largest data value in dataset
+            .domain([0, getMaxData()]) //sets the upper end of the input domain to the largest data value in dataset
             .range([0, h]);
 
         svg.selectAll("rect")
@@ -81,13 +97,13 @@ const BarChart = (props) => {
             .transition() // <---- Here is the transition
             .duration(1000) // 2 seconds
             .attr("y", function (d) {
-                return h - yScale(d);
+                return h - yScale(d.data);
             })
             .attr("height", function (d) {
-                return yScale(d);
+                return yScale(d.data);
             })
             .attr("fill", function (d) {
-                return "rgb(" + Math.round(d * 8) + ",0," + Math.round(d * 10) + ")";
+                return "rgb(" + Math.round(d.data * 8) + ",0," + Math.round(d.data * 10) + ")";
             });
     }, [data])
 
