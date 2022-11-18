@@ -48,10 +48,6 @@ const BarChart = (props) => {
             .range([0, w])
             .padding(0.05);
 
-        // const yScale = d3.scaleLinear()
-        //     .domain([0, getMaxData()]) //sets the upper end of the input domain to the largest data value in dataset
-        //     .range([h, 0]);
-
         const svg = d3.select(ref.current)
             .attr("width", w)
             .attr("height", h)
@@ -69,8 +65,6 @@ const BarChart = (props) => {
             .attr("fill", d => "rgb(" + Math.round(d * 8) + ",0," + Math.round(d * 10) + ")") //Change the color of the bar depending on the valuest
         svg.append('g').attr("class", "x-axis");
         svg.append('g').attr("class", "y-axis");
-        // svg.append('g').attr("class", "x-axis-label");
-
     }, [])
 
     useEffect(() => {
