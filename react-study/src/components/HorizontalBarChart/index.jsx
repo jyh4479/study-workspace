@@ -7,13 +7,13 @@ const HorizontalBarChart = (props) => {
     const ref = useRef();
 
     const [data, setData] = useState([{name: "tibero1", data: 20}, {name: "tibero2", data: 15}, {
-        name: "tibero3",
-        data: 17
+        name: "tibero3", data: 17
     }, {name: "tibero4", data: 10}, {name: "tibero5", data: 25}]);
 
     const w = 250;
     const h = 150;
     const padding = 0.5;
+    const colors = ["#1565C0", "#1E88E5", "#42A5F5", "#90CAF9", "#BBDEFB"];
 
     const getMaxData = () => {
         let value = 0;
@@ -70,7 +70,9 @@ const HorizontalBarChart = (props) => {
 
         svg.select(".x-axis")
             .call(xAxis)
-            .attr("transform", `translate(0, ${h})`);
+            .attr("transform", `translate(0, ${h})`)
+            .selectAll("text")
+        // .attr("fill", "#B5B5B5")
 
         svg.select(".y-axis").select("path").remove();
         svg.select(".y-axis").selectAll(".tick").select("line").remove();
@@ -80,7 +82,7 @@ const HorizontalBarChart = (props) => {
             .append("rect").attr('y', -6.5).attr('x', -54).attr("width", 12).attr("height", 12).attr("rx", 2).attr("class", "number-box");
 
         svg.select(".y-axis").selectAll(".tick")
-            .append('text').attr('y', 3).attr('x', -45.5).attr("fill", "#ffffff").text((d, i) => i + 1);
+            .append('text').attr('y', 3).attr('x', -48).attr("fill", "#ffffff").attr("text-anchor", "middle").text((d, i) => i + 1);
 
         svg.selectAll(".data-bar")
             .data(data)
@@ -113,28 +115,31 @@ const HorizontalBarChart = (props) => {
             .duration(1000)
             .attr("x", 0)
             .attr("width", d => xScale(d.data))
-            .attr("rx", 2)
-            .attr("fill", (d, i) => "rgb(" + Math.round(d.data * 8) + ",0," + Math.round(d.data * 10) + ")")
+            .attr("fill", (d, i) => colors[i])
         // .attr("fill", d => "rgb(" + Math.round(d.data * 8) + ",0," + Math.round(d.data * 10) + ")")
 
         svg.select(".x-axis")
             .call(xAxis)
-            .attr("transform", `translate(0, ${h})`);
+            .attr("transform", `translate(0, ${h})`)
+            .selectAll("line")
+            .attr("stroke", "#DFE5EB")
+        svg.select(".x-axis")
+            .selectAll("text")
+            .attr("fill", "#B5B5B5")
+
         svg.select(".x-axis").select("path").remove();
 
     }, [data])
 
-    return (
-        <div>
-            <CenterBox>
-                <h2>Top 5 Chart Example</h2>
-                <button onClick={() => updateData()}>Random Data</button>
-            </CenterBox>
-            <CenterBox>
-                <svg ref={ref}></svg>
-            </CenterBox>
-        </div>
-    )
+    return (<div>
+        <CenterBox>
+            <h2>Top 5 Chart Example</h2>
+            <button onClick={() => updateData()}>Random Data</button>
+        </CenterBox>
+        <CenterBox>
+            <svg ref={ref}></svg>
+        </CenterBox>
+    </div>)
 };
 
 export default HorizontalBarChart;
