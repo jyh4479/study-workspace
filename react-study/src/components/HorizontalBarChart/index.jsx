@@ -63,9 +63,10 @@ const HorizontalBarChart = (props) => {
         // D3, SVG는 z-index가 따로 없음 먼저 그려지는것 순서로 z-index의 우선순위가 낮아짐
         // g를 먼저 넣어주는건 line 위에 bar chart가 그려지게 하기위함
         svg.append('g').attr("class", "x-axis");
-        svg.append('g').attr("class", "y-axis");
+        svg.append('g').attr("class", "y-axis-left");
+        svg.append('g').attr("class", "y-axis-right");
 
-        svg.select(".y-axis")
+        svg.select(".y-axis-left")
             .call(yAxis)
 
         svg.select(".x-axis")
@@ -74,14 +75,14 @@ const HorizontalBarChart = (props) => {
             .selectAll("text")
         // .attr("fill", "#B5B5B5")
 
-        svg.select(".y-axis").select("path").remove();
-        svg.select(".y-axis").selectAll(".tick").select("line").remove();
+        svg.select(".y-axis-left").select("path").remove();
+        svg.select(".y-axis-left").selectAll(".tick").select("line").remove();
         svg.select(".x-axis").select("path").remove();
 
-        svg.select(".y-axis").selectAll(".tick")
+        svg.select(".y-axis-left").selectAll(".tick")
             .append("rect").attr('y', -6.5).attr('x', -54).attr("width", 12).attr("height", 12).attr("rx", 2).attr("class", "number-box");
 
-        svg.select(".y-axis").selectAll(".tick")
+        svg.select(".y-axis-left").selectAll(".tick")
             .append('text').attr('y', 3).attr('x', -48).attr("fill", "#ffffff").attr("text-anchor", "middle").text((d, i) => i + 1);
 
         svg.selectAll(".data-bar")
@@ -105,9 +106,17 @@ const HorizontalBarChart = (props) => {
             .domain([0, getMaxData()])
             .range([0, h]);
 
+        const yRightScale = d3.scaleBand()
+            .domain(d3.range(data.length))
+            .range([0, h])
+            .padding(padding);
+
         const xAxis = d3.axisBottom(xScale)
             .tickSize(-h)
             .ticks(5);
+
+        const yAxisRight = d3.axisRight(yRightScale)
+            .ticks(data.length).tickFormat(i => data[i].data);
 
         svg.selectAll(".data-bar")
             .data(data)
@@ -120,7 +129,7 @@ const HorizontalBarChart = (props) => {
 
         svg.select(".x-axis")
             .call(xAxis)
-            .attr("transform", `translate(0, ${h})`)
+
             .selectAll("line")
             .attr("stroke", "#DFE5EB")
         svg.select(".x-axis")
@@ -128,6 +137,13 @@ const HorizontalBarChart = (props) => {
             .attr("fill", "#B5B5B5")
 
         svg.select(".x-axis").select("path").remove();
+
+        svg.select(".y-axis-right")
+            .call(yAxisRight)
+            .attr("transform", `translate(${w-90}, 0)`)
+
+        svg.select(".y-axis-right").select("path").remove();
+        svg.select(".y-axis-right").selectAll("line").remove();
 
     }, [data])
 
