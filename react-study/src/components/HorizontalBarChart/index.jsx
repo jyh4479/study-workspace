@@ -116,7 +116,7 @@ const HorizontalBarChart = (props) => {
             .ticks(5);
 
         const yAxisRight = d3.axisRight(yRightScale)
-            .ticks(data.length).tickFormat(i => data[i].data);
+            .ticks(data.length).tickFormat(i => `${data[i].data} %`);
 
         svg.selectAll(".data-bar")
             .data(data)
@@ -129,7 +129,6 @@ const HorizontalBarChart = (props) => {
 
         svg.select(".x-axis")
             .call(xAxis)
-
             .selectAll("line")
             .attr("stroke", "#DFE5EB")
         svg.select(".x-axis")
@@ -140,7 +139,9 @@ const HorizontalBarChart = (props) => {
 
         svg.select(".y-axis-right")
             .call(yAxisRight)
-            .attr("transform", `translate(${w-90}, 0)`)
+            .attr("transform", `translate(${w - 90}, 0)`)
+            .selectAll("text")
+            .attr("fill", "#2979FF")
 
         svg.select(".y-axis-right").select("path").remove();
         svg.select(".y-axis-right").selectAll("line").remove();
