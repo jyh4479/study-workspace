@@ -6,9 +6,13 @@ const HorizontalBarChart = (props) => {
 
     const ref = useRef();
 
-    const [data, setData] = useState([{name: "tibero1", data: 20}, {name: "tibero2", data: 15}, {
-        name: "tibero3", data: 17
-    }, {name: "tibero4", data: 10}, {name: "tibero5", data: 25}]);
+    const [data, setData] = useState([
+        {name: "tibero1", data: 20},
+        {name: "tibero2", data: 15},
+        {name: "tibero3", data: 17},
+        {name: "tibero4", data: 10},
+        {name: "tibero5", data: 25}
+    ]);
 
     const w = 250;
     const h = 150;
