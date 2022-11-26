@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import * as d3 from "d3";
 import {CenterBox} from "../common/style";
+import "./index.css";
 
 const HorizontalBarChart = (props) => {
 
@@ -87,7 +88,7 @@ const HorizontalBarChart = (props) => {
             .append("rect").attr('y', -6.5).attr('x', -54).attr("width", 12).attr("height", 12).attr("rx", 2).attr("class", "number-box");
 
         svg.select(".y-axis-left").selectAll(".tick")
-            .append('text').attr('y', 3).attr('x', -48).attr("fill", "#ffffff").attr("text-anchor", "middle").text((d, i) => i + 1);
+            .append('text').attr('y', 3).attr('x', -48).attr("class", "number-box-text").text((d, i) => i + 1);
 
         svg.selectAll(".data-bar")
             .data(data)

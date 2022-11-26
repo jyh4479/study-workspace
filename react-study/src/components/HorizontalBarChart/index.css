@@ -1,3 +1,8 @@
 .number-box {
     fill: #2979FF;
 }
+
+.number-box-text {
+    fill: #ffffff;
+    text-anchor: middle;
+}
