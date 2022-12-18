@@ -2,6 +2,7 @@ import './App.css';
 import BarChart from "./components/BarChart";
 import BarChartRange from "./components/BarChartRange";
 import HorizontalBarChart from "./components/HorizontalBarChart";
+import {MenuList} from "./components/CompoundPattern";
 
 function App() {
     return (
@@ -9,8 +10,15 @@ function App() {
 
             {/*<Carousel/>*/}
             {/*<BarChart/>*/}
-            <HorizontalBarChart/>
+
+            {/* current testing */}
+            {/*<HorizontalBarChart/>*/}
             {/*<BarChartRange/>*/}
+
+            <MenuList>
+                <MenuList.MainMenu/>
+                <MenuList.SubMenu/>
+            </MenuList>
 
         </div>
     );

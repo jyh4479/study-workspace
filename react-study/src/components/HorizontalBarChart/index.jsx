@@ -34,6 +34,7 @@ const HorizontalBarChart = (props) => {
         return Math.floor(Math.random() * (max - min)) + min;
     }
 
+    //실제로는 props로 전달되는 데이터가 변경됨
     const updateData = () => {
         setData(prev => prev.map((d, i) => {
             return {name: `tibero${i + 1}`, data: getRandomData(0, 20)}
@@ -45,8 +46,7 @@ const HorizontalBarChart = (props) => {
         d3.selectAll("svg > *").remove();
 
         const svg = d3.select(ref.current)
-            .attr("width", w)
-            .attr("height", h)
+            .attr("width", w).attr("height", h)
             .style("overflow", "visible");
 
         const yScale = d3.scaleBand()
@@ -84,11 +84,19 @@ const HorizontalBarChart = (props) => {
         svg.select(".y-axis-left").selectAll(".tick").select("line").remove();
         svg.select(".x-axis").select("path").remove();
 
-        svg.select(".y-axis-left").selectAll(".tick")
-            .append("rect").attr('y', -6.5).attr('x', -54).attr("width", 12).attr("height", 12).attr("rx", 2).attr("class", "number-box");
+        svg.select(".y-axis-left")
+            .selectAll(".tick")
+            .append("rect")
+            .attr('y', -6.5).attr('x', -54)
+            .attr("width", 12).attr("height", 12)
+            .attr("rx", 2).attr("class", "number-box");
 
-        svg.select(".y-axis-left").selectAll(".tick")
-            .append('text').attr('y', 3).attr('x', -48).attr("class", "number-box-text").text((d, i) => i + 1);
+        svg.select(".y-axis-left")
+            .selectAll(".tick")
+            .append('text')
+            .attr('y', 3).attr('x', -48)
+            .attr("class", "number-box-text")
+            .text((d, i) => i + 1);
 
         svg.selectAll(".data-bar")
             .data(data)
