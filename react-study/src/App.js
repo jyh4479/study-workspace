@@ -3,6 +3,7 @@ import BarChart from "./components/BarChart";
 import BarChartRange from "./components/BarChartRange";
 import HorizontalBarChart from "./components/HorizontalBarChart";
 import {MenuList} from "./components/CompoundPattern";
+import A from "./components/RenderingTestComponent/A";
 
 function App() {
     return (
@@ -15,10 +16,12 @@ function App() {
             {/*<HorizontalBarChart/>*/}
             {/*<BarChartRange/>*/}
 
-            <MenuList>
-                <MenuList.MainMenu/>
-                <MenuList.SubMenu/>
-            </MenuList>
+            {/*<MenuList>*/}
+            {/*    <MenuList.MainMenu/>*/}
+            {/*    <MenuList.SubMenu/>*/}
+            {/*</MenuList>*/}
+
+            <A/>
 
         </div>
     );
