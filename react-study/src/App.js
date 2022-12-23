@@ -7,15 +7,20 @@ import {
     LinearScale,
     PointElement,
     LineElement,
-    BarElement
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
 } from "chart.js";
+import A from "./components/RenderingTestComponent/A";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
 
 function App() {
     return (
         <div className="App">
             <ChartLayoutContainer/>
+            {/*<A/>*/}
         </div>
     );
 }

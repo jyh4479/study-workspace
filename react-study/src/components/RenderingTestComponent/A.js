@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import B from "./B";
 import C from "./C";
 
 const A = (props) => {
 
     const [count, setCount] = useState(0);
+
+    const notReRender = useMemo(() => <C/>, [])
 
     return (
         <div style={{
@@ -14,11 +16,12 @@ const A = (props) => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            background: "grey"
+            background: "orange"
         }}>
-            {count}
+            <div>Parent Component</div>
+            <div>{`Count: ${count}`}</div>
             <B parentSetCount={setCount}/>
-            <C/>
+            {notReRender}
         </div>
     )
 };

@@ -11,7 +11,7 @@ const BarChart = props => {
     const [categories, setCategories] = useState(dummyArray.map((d, i) => i));
 
     useEffect(() => {
-        setData(dummyArray.map(() => getRandomNumber(0, 100)));
+        setData(dummyArray.map(() => getRandomIntNumber(0, 100)));
     }, [eventFlag])
 
     const series = [{
@@ -33,13 +33,14 @@ const BarChart = props => {
             enabled: false
         },
         xaxis: {
-            categories: categories
+            categories: categories,
+            tickAmount:10
         }
     };
 
     return (
         <div style={{width: "500px", height: "350px"}}>
-            <ReactApexChart options={options} series={series} type="bar"/>;
+            <ReactApexChart options={options} series={series} type="bar"/>
         </div>
     )
 }

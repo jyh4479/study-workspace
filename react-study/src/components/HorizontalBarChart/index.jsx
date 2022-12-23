@@ -5,18 +5,27 @@ import "./index.css";
 
 const HorizontalBarChart = (props) => {
 
+    const {data, id} = props;
+
+    // const [data, setData] = useState(chartData);
+    //
+    // useEffect(()=>{
+    //     console.log(123)
+    //     console.log(data)
+    // },[chartData])
+
     const ref = useRef();
 
-    const [data, setData] = useState([
-        {name: "tibero1", data: 20},
-        {name: "tibero2", data: 15},
-        {name: "tibero3", data: 17},
-        {name: "tibero4", data: 10},
-        {name: "tibero5", data: 25}
-    ]);
+    // const [data, setData] = useState([
+    //     {name: "tibero1", data: 20},
+    //     {name: "tibero2", data: 15},
+    //     {name: "tibero3", data: 17},
+    //     {name: "tibero4", data: 10},
+    //     {name: "tibero5", data: 25}
+    // ]);
 
-    const w = 250;
-    const h = 150;
+    const w = 500;
+    const h = 350;
     const padding = 0.5;
     const colors = ["#1565C0", "#1E88E5", "#42A5F5", "#90CAF9", "#BBDEFB"];
 
@@ -35,15 +44,15 @@ const HorizontalBarChart = (props) => {
     }
 
     //실제로는 props로 전달되는 데이터가 변경됨
-    const updateData = () => {
-        setData(prev => prev.map((d, i) => {
-            return {name: `tibero${i + 1}`, data: getRandomData(0, 20)}
-        }));
-    }
+    // const updateData = () => {
+    //     setData(prev => prev.map((d, i) => {
+    //         return {name: `tibero${i + 1}`, data: getRandomData(0, 20)}
+    //     }));
+    // }
 
     useEffect(() => {
 
-        d3.selectAll("svg > *").remove();
+        // d3.selectAll("svg > *").remove();
 
         const svg = d3.select(ref.current)
             .attr("width", w).attr("height", h)
@@ -137,7 +146,7 @@ const HorizontalBarChart = (props) => {
             .duration(1000)
             .attr("x", 0)
             .attr("width", d => xScale(d.data))
-            .attr("fill", (d, i) => colors[i])
+            .attr("fill", (d, i) => colors[i % 5])
         // .attr("fill", d => "rgb(" + Math.round(d.data * 8) + ",0," + Math.round(d.data * 10) + ")")
 
         svg.select(".x-axis")
@@ -162,13 +171,13 @@ const HorizontalBarChart = (props) => {
     }, [data])
 
     return (<div>
-        <CenterBox>
-            <h2>Top 5 Chart Example</h2>
-            <button onClick={() => updateData()}>Random Data</button>
-        </CenterBox>
-        <CenterBox>
-            <svg ref={ref}></svg>
-        </CenterBox>
+        {/*<CenterBox>*/}
+        {/*    <h2>Top 5 Chart Example</h2>*/}
+        {/*    <button onClick={() => updateData()}>Random Data</button>*/}
+        {/*</CenterBox>*/}
+        {/*<CenterBox>*/}
+        <svg ref={ref} id={`svg-${id}`}/>
+        {/*</CenterBox>*/}
     </div>)
 };
 

@@ -25,11 +25,26 @@ const BarChart = (props) => {
     }
 
     const options = {
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    title: function () {
+                        return "my tittle";
+                    }
+                }
+            },
+            legend: {display: false},
+            title: {
+                display: true,
+                text: "Test chart",
+                position: "top"
+            }
+        },
         scales: {
             y: {
                 beginAtZero: true
             }
-        }
+        },
     }
 
     return (
