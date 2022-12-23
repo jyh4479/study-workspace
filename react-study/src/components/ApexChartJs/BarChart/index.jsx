@@ -1,48 +1,47 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import ReactApexChart from "react-apexcharts";
+import {getRandomIntNumber, getRandomNumber} from "../../../utils/number";
 
-export default class BarChart extends React.Component {
-    constructor(props) {
-        super(props);
+const BarChart = props => {
 
-        this.state = {
+    const {eventFlag} = props;
 
-            series: [{
-                data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
-            }],
-            options: {
-                chart: {
-                    type: 'bar',
-                    height: 350
-                },
-                plotOptions: {
-                    bar: {
-                        borderRadius: 4,
-                        horizontal: true,
-                    }
-                },
-                dataLabels: {
-                    enabled: false
-                },
-                xaxis: {
-                    categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
-                        'United States', 'China', 'Germany'
-                    ],
-                }
-            },
+    const dummyArray = new Array(100).fill(true);
+    const [data, setData] = useState(dummyArray.map(() => getRandomIntNumber(0, 100)));
+    const [categories, setCategories] = useState(dummyArray.map((d, i) => i));
 
+    useEffect(() => {
+        setData(dummyArray.map(() => getRandomNumber(0, 100)));
+    }, [eventFlag])
 
-        };
-    }
+    const series = [{
+        data: data
+    }]
 
+    const options = {
+        chart: {
+            type: 'bar',
+            height: 350
+        },
+        plotOptions: {
+            bar: {
+                borderRadius: 4,
+                horizontal: false,
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        xaxis: {
+            categories: categories
+        }
+    };
 
-    render() {
-        return (
-
-
-            <ReactApexChart options={this.state.options} series={this.state.series} type="bar" height={350}/>
-
-
-        );
-    }
+    return (
+        <div style={{width: "500px", height: "350px"}}>
+            <ReactApexChart options={options} series={series} type="bar"/>;
+        </div>
+    )
 }
+
+export default BarChart;

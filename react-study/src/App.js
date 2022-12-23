@@ -1,18 +1,21 @@
 import './App.css';
-import {Profiler} from 'react';
-import {ApexBarChart} from "./components/ApexChartJs";
+import ChartLayoutContainer from "./containers/ChartLayoutContainer";
+
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    BarElement
+} from "chart.js";
+
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement);
 
 function App() {
-
-    const onRenderCallback = (id, phase, actualDuration, baseDuration, startTime, commitTime, interactions) => {
-        console.log(actualDuration);
-    }
-
     return (
         <div className="App">
-            <Profiler id="Navigation" onRender={onRenderCallback}>
-                <ApexBarChart/>
-            </Profiler>
+            <ChartLayoutContainer/>
         </div>
     );
 }
