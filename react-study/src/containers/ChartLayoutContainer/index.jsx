@@ -33,8 +33,8 @@ const ChartLayoutContainer = (props) => {
 
             <Profiler id="ChartLayout" onRender={onRenderCallback}>
                 {/*{dummyArray.map((d, i) => <ApexBarChart key={i} eventFlag={eventFlag}/>)}*/}
-                {/*{dummyArray.map((d, i) => <ChartJsBarChart key={i} eventFlag={eventFlag}/>)}*/}
-                {dummyArray.map((d, i) => <D3BarChart key={i} eventFlag={eventFlag} id={i}/>)}
+                {dummyArray.map((d, i) => <ChartJsBarChart key={i} eventFlag={eventFlag}/>)}
+                {/*{dummyArray.map((d, i) => <D3BarChart key={i} eventFlag={eventFlag} id={i}/>)}*/}
             </Profiler>
         </div>
 

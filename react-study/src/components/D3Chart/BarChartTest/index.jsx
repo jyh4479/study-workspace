@@ -6,7 +6,7 @@ const BarChartTest = (props) => {
 
     const {eventFlag, id} = props;
 
-    const dummyArray = new Array(20).fill(true);
+    const dummyArray = new Array(100).fill(true);
     const [chartData, setChartData] = useState(dummyArray.map((d, i) => {
         return {name: i, data: getRandomIntNumber(0, 100)};
     }));
