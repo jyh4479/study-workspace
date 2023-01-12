@@ -1,9 +1,25 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 const B = (props) => {
 
     const {parentSetCount} = props;
     const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        console.log("난 B");
+    }, [])
+
+    useEffect(() => {
+        console.log("난 B 친구1");
+    }, [])
+
+    useEffect(() => {
+        console.log("난 B 친구2");
+    }, [])
+
+    useEffect(() => {
+        console.log("난 B 친구3");
+    }, [])
 
     return (
         <div style={{width: "200px", height: "100px", background: "red"}}>

@@ -1,26 +1,32 @@
 import './App.css';
-import ChartLayoutContainer from "./containers/ChartLayoutContainer";
+import {Chart, ScatterChart} from "./components/ChartJs";
 
 import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
     BarElement,
+    CategoryScale,
+    Chart as ChartJS,
+    Filler,
+    Legend,
+    LinearScale,
+    LineElement,
+    PointElement,
     Title,
-    Tooltip,
-    Legend
+    Tooltip
 } from "chart.js";
+import zoomPlugin from "chartjs-plugin-zoom";
 import A from "./components/RenderingTestComponent/A";
+// import boxselectPlugin from "chartjs-plugin-boxselect";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, Filler, zoomPlugin);
 
 function App() {
     return (
         <div className="App">
-            <ChartLayoutContainer/>
-            {/*<A/>*/}
+            {/*<ChartLayoutContainer/>*/}
+            <A/>
+
+            {/*<Chart type={'line'}/>*/}
+            {/*<ScatterChart/>*/}
         </div>
     );
 }

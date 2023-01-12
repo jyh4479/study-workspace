@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, {useEffect, useLayoutEffect, useMemo, useState} from 'react';
 import B from "./B";
 import C from "./C";
 
@@ -7,6 +7,14 @@ const A = (props) => {
     const [count, setCount] = useState(0);
 
     const notReRender = useMemo(() => <C/>, [])
+
+    useLayoutEffect(() => {
+        console.log("난 A Layout");
+    }, [])
+
+    useEffect(() => {
+        console.log("난 A");
+    }, [])
 
     return (
         <div style={{
@@ -20,8 +28,10 @@ const A = (props) => {
         }}>
             <div>Parent Component</div>
             <div>{`Count: ${count}`}</div>
+            <C/>
             <B parentSetCount={setCount}/>
-            {notReRender}
+            <C/>
+            {/*{notReRender}*/}
         </div>
     )
 };
