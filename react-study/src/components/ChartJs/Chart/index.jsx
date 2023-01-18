@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Chart as CommonChart} from "react-chartjs-2";
-import {getRandomIntNumber} from "../../../utils/number";
+import {getRandomIntNumber, getYaxisNumericFormat} from "../../../utils/number";
 import {getChartFillColor} from "../utils";
 
 const Chart = (props) => {
@@ -9,7 +9,7 @@ const Chart = (props) => {
 
     const dummyArray = new Array(5).fill(true);
     const [chartData, setChartData] = useState(dummyArray.map((d, i) => {
-        return {x: i, y: getRandomIntNumber(0, 100)}
+        return {x: i, y: getRandomIntNumber(0, 1000000000)}
     }));
     const [labels, setLabels] = useState(dummyArray.map((d, i) => i));
 
@@ -53,6 +53,11 @@ const Chart = (props) => {
         },
         scales: {
             y: {
+                ticks: {
+                    callback: (label, index, labels) => {
+                        return getYaxisNumericFormat(label);
+                    }
+                },
                 beginAtZero: true
             }
         },

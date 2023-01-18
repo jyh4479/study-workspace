@@ -23,9 +23,9 @@ function App() {
     return (
         <div className="App">
             {/*<ChartLayoutContainer/>*/}
-            <A/>
+            {/*<A/>*/}
 
-            {/*<Chart type={'line'}/>*/}
+            <Chart type={'line'}/>
             {/*<ScatterChart/>*/}
         </div>
     );
