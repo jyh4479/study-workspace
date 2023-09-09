@@ -1,42 +1,49 @@
-class Parent {
-    constructor(name) {
-        this.name = name
-    }
-
-    callParentName() {
-        console.log(this.name + "부모")
-    }
+function Parent() {
+    this.greet = function () {
+        console.log("Parent's greet");
+    };
 }
 
-class Children extends Parent {
-    callChildrenName() {
-        console.log(this.name + "자식")
-    }
+Parent.prototype.greet = function () {
+    console.log("Parent prototype's greet");
+};
+
+function Child() {
+    this.greet = function () {
+        console.log("Child's greet");
+    };
 }
 
-const jyh = new Children("jyh");
-const parentJyh = new Parent("parentJyh");
+Child.prototype = new Parent(); //-> 이게 extends와 비슷한 부분인데 동작이 조금 다름
 
-Parent.prototype.callParent2Name = function () {
-    console.log(this.name, this.name);
-}
+Child.prototype.greet = function () {
+    console.log("Child prototype's greet");
+};
 
-function TestParent() {
+const child = new Child();
 
-}
+child.greet();
 
-jyh.callChildrenName()
-jyh.callParentName()
-jyh.callParent2Name()
-
-TestParent.prototype.name = "jyh";
-const jyhTest = new TestParent();
-
-Object.prototype.hihi = 13
-Function.prototype.hihihi = 13
-
-console.log(Parent.__proto__)
-console.log(TestParent.__proto__.__proto__)
-console.log(Children.__proto__.__proto__)
-
-console.log(jyhTest.__proto__)
+// class Parent {
+//     greet = function () {
+//         console.log("Parent's greet");
+//     };
+// }
+//
+// class Child extends Parent {
+//     // greet = function () {
+//     //     console.log("Child's greet");
+//     // };
+// }
+//
+// Parent.prototype.greet = function () {
+//     console.log("Parent prototype's greet");
+// };
+//
+// Child.prototype.greet = function () { // -> 이렇게 정의하는것보다 extends해서 정의되는 함수가 우선순위가 높음
+//     console.log("Child prototype's greet");
+// };
+//
+// const child = new Child();
+//
+// child.greet();
