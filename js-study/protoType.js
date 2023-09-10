@@ -14,7 +14,7 @@ function Child() {
     };
 }
 
-Child.prototype = new Parent(); //-> 이게 extends와 비슷한 부분인데 동작이 조금 다름
+Child.prototype = new Parent(); //-> 이게 extends와 비슷한 부분인데 class와 동작이 다름
 
 Child.prototype.greet = function () {
     console.log("Child prototype's greet");
@@ -45,5 +45,7 @@ child.greet();
 // };
 //
 // const child = new Child();
-//
-// child.greet();
+
+child.greet();
+
+console.log(Child.__proto__)
