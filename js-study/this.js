@@ -11,5 +11,16 @@ function functionThis() {
     }
 }
 
-arrowThis();
-functionThis();
+const obj = {
+    name: "this test",
+    getFunctionThis: function () {
+        console.log(this);
+        const arrowThis = () => {
+            console.log(this);
+        }
+        arrowThis();
+    },
+    getThis: () => console.log(this)
+}
+
+obj.getFunctionThis();
