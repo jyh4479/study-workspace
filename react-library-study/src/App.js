@@ -1,5 +1,4 @@
 import './App.css';
-import {Chart, ScatterChart} from "./components/ChartJs";
 
 import {
     BarElement,
@@ -14,7 +13,8 @@ import {
     Tooltip
 } from "chart.js";
 import zoomPlugin from "chartjs-plugin-zoom";
-import A from "./components/RenderingTestComponent/A";
+import SetStateTestContainer from "./containers/SetStateTestContainer";
+import SetStateTestContainer2 from "./containers/SetStateTestContainer2";
 // import boxselectPlugin from "chartjs-plugin-boxselect";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, Filler, zoomPlugin);
@@ -24,8 +24,10 @@ function App() {
         <div className="App">
             {/*<ChartLayoutContainer/>*/}
             {/*<A/>*/}
-
-            <Chart type={'line'}/>
+            <SetStateTestContainer>
+                <SetStateTestContainer2/>
+            </SetStateTestContainer>
+            {/*<Chart type={'line'}/>*/}
             {/*<ScatterChart/>*/}
         </div>
     );
