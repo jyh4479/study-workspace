@@ -2,7 +2,6 @@ import React, {useEffect, useLayoutEffect, useState} from 'react';
 
 const SetStateTestContainer = (props) => {
 
-    const [functionTest, set] = useState(console.log(123));
     const [count, setCount] = useState(0);
 
     useLayoutEffect(() => {
