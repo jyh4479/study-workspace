@@ -14,6 +14,8 @@ import {
 } from "chart.js";
 import zoomPlugin from "chartjs-plugin-zoom";
 import PhoneNumberInput from "./components/PhoneNumberInput";
+import Grid from "./components/Grid";
+import styled from "styled-components";
 // import boxselectPlugin from "chartjs-plugin-boxselect";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, Filler, zoomPlugin);
@@ -21,7 +23,11 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarEleme
 function App() {
     return (
         <div className="App">
-            <PhoneNumberInput/>
+            {/*<PhoneNumberInput/>*/}
+
+            <Grid>
+            </Grid>
+
         </div>
     );
 }
