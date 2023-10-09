@@ -1,12 +1,10 @@
-'use client'
+// 'use client'
 import axios from "axios";
+import ProductsList from "@/app/dashboard/products/components/ProductsList";
 
 const getProductData = async (productId: string) => {
 
     const product = await axios.get(`https://dummyjson.com/products/${productId}`);
-
-    console.log(product.data)
-
     return product.data;
 }
 

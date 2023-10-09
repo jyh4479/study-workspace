@@ -2,7 +2,7 @@
 import {useRouter} from 'next/navigation'
 import {useState} from "react";
 
-const dashboard = () => {
+const Dashboard = () => {
     const router = useRouter();
 
     const [productId, setProductId] = useState('');
@@ -18,9 +18,13 @@ const dashboard = () => {
                 <button className={"m-5 bg-blue-400"}
                         onClick={() => router.push(`/dashboard/products/${productId}`)}>페이지 이동
                 </button>
+
+                <button className={"m-5 bg-blue-400"}
+                        onClick={() => router.push(`/dashboard/products`)}>go 프로덕트
+                </button>
             </div>
         </div>
     )
 }
 
-export default dashboard;
+export default Dashboard;
