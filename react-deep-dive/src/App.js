@@ -1,9 +1,10 @@
 import React from "react";
-import ReactShallowEqual from "./example/ReactShallowEqual";
+import TaskQueueRendering from "./example/TaskQueueRendering";
 
 const App = () => {
     return (
-        <ReactShallowEqual/>
+        // <ReactShallowEqual/>
+        <TaskQueueRendering/>
     )
 }
 
