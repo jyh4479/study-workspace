@@ -9,3 +9,23 @@ using namespace std;
 void TaskQueue::queueRun() {
     cout << "queue run" << endl;
 }
+
+void TaskQueue::push(function<void()> func){
+    this->q.push(func);
+}
+
+void TaskQueue::pop(){
+    this->q.pop();
+}
+
+function<void()> TaskQueue::front(){
+    return this->q.front();
+}
+
+function<void()> TaskQueue::back(){
+    return this->q.back();
+}
+
+bool TaskQueue::empty(){
+    return this->q.empty();
+}
