@@ -10,7 +10,6 @@ class TaskQueue {
 
     public:
         TaskQueue() = default;
-        void queueRun();
         void push(function<void()> func);
         void pop();
         bool empty();

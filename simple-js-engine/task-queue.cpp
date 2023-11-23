@@ -3,13 +3,6 @@
 #include <iostream>
 using namespace std;
 
-// TaskQueue::TaskQueue() {
-// }
-
-void TaskQueue::queueRun() {
-    cout << "queue run" << endl;
-}
-
 void TaskQueue::push(function<void()> func){
     this->q.push(func);
 }
