@@ -3,13 +3,10 @@
 #include <iostream>
 #include <string>
 #include <thread>
-#include <functional>
 #include <unistd.h>
 using namespace std;
 
-Scheduler::Scheduler() {
-    // this->q = TaskQueue();
-}
+Scheduler::Scheduler() {}
 
 void Scheduler::jsCode(string content) {
     cout << content << endl;
@@ -34,23 +31,30 @@ void Scheduler::runTask(function<void(string)> func, string content) {
 }
 
 void Scheduler::run() {
-    cout << "scheduler run" << endl;
+    cout << "---- run scheduler ----" << endl;
 
     this->runTask(bind(&Scheduler::jsCode, this, placeholders::_1), "TEST");
-    this->runAsyncTask(bind(&Scheduler::jsCode, this, placeholders::_1), "HIHI", 5);
-    this->runAsyncTask(bind(&Scheduler::jsCode, this, placeholders::_1), "TEST2", 1);
-    this->runAsyncTask(bind(&Scheduler::jsCode, this, placeholders::_1), "TEST3", 2);
-    this->runTask(bind(&Scheduler::jsCode, this, placeholders::_1), "TEST4");
+    this->runAsyncTask(bind(&Scheduler::jsCode, this, placeholders::_1), "TEST2", 5);
+    this->runAsyncTask(bind(&Scheduler::jsCode, this, placeholders::_1), "TEST3", 1);
+    this->runAsyncTask(bind(&Scheduler::jsCode, this, placeholders::_1), "TEST4", 2);
+    this->runTask(bind(&Scheduler::jsCode, this, placeholders::_1), "TEST5");
 
-    sleep(7);
+    sleep(1);
+    this->runTask(bind(&Scheduler::jsCode, this, placeholders::_1), "TEST6");
+    this->runAsyncTask(bind(&Scheduler::jsCode, this, placeholders::_1), "TEST7", 10);
+    sleep(1);
+    this->runTask(bind(&Scheduler::jsCode, this, placeholders::_1), "TEST8");
+    this->runAsyncTask(bind(&Scheduler::jsCode, this, placeholders::_1), "TEST9", 2);
+    sleep(1);
+
+    cout << "----- end stack ------" << endl;
     
-    while(!this->q.empty()){
-        function<void()> func = this->q.front();
-        this->q.pop();
-        func();
+    while(1){
+        while(!this->q.empty()){
+            cout << "----- run task queue ------" << endl;
+            function<void()> func = this->q.front();
+            this->q.pop();
+            func();
+        }
     }
-
-    cout << "----- 부모는 끝 ------" << endl;
-
-    while(1);
 }
