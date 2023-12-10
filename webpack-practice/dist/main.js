@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log("This is index.js!"),console.log("5 + 3 = "+(5,3,8)),console.log("5 * 3 = 15")})();
