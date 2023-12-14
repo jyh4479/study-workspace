@@ -1,8 +1,23 @@
 const workerButton = document.getElementById("worker-button");
-workerButton.addEventListener("click", onClickWorker);
-const onClickWorker = () => {
+const workerStatus = document.getElementById("worker-status");
 
+const myWorker = new Worker("worker.js");
+let myWorkerStatus = "ready";
+
+const onClickWorker = () => {
+    myWorker.postMessage("hi worker!");
+    myWorkerStatus = "run";
+    workerStatus.textContent = myWorkerStatus;
 }
+
+myWorker.onmessage = (e) => {
+    console.log(e.data);
+    myWorkerStatus = "ready";
+    workerStatus.textContent = myWorkerStatus;
+}
+
+workerButton.addEventListener("click", onClickWorker);
+
 
 // if (window.Worker) {
 //     const myWorker = new Worker("worker.js");
