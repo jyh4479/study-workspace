@@ -2,10 +2,11 @@ import React, {Profiler, useState} from 'react';
 import {ChartJsBarChart} from "../../components/ChartJs";
 import {ApexBarChart} from "../../components/ApexChartJs";
 import {D3BarChart} from "../../components/D3Chart";
+import {NivoBarChart} from "../../components/NivoChart";
 
 const ChartLayoutContainer = (props) => {
 
-    const dummyArray = new Array(100).fill(false);
+    const dummyArray = new Array(10).fill(false);
     const [eventFlag, setEventFlag] = useState(false);
 
     const onRenderCallback = (id, phase, actualDuration, baseDuration, startTime, commitTime, interactions) => {
@@ -33,7 +34,8 @@ const ChartLayoutContainer = (props) => {
 
             <Profiler id="ChartLayout" onRender={onRenderCallback}>
                 {/*{dummyArray.map((d, i) => <ApexBarChart key={i} eventFlag={eventFlag}/>)}*/}
-                {dummyArray.map((d, i) => <ChartJsBarChart key={i} eventFlag={eventFlag}/>)}
+                {/*{dummyArray.map((d, i) => <ChartJsBarChart key={i} eventFlag={eventFlag}/>)}*/}
+                {dummyArray.map((d, i) => <NivoBarChart key={i} eventFlag={eventFlag}/>)}
                 {/*{dummyArray.map((d, i) => <D3BarChart key={i} eventFlag={eventFlag} id={i}/>)}*/}
             </Profiler>
         </div>
